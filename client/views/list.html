@@ -1,0 +1,57 @@
+<div class="head">
+    <h1>chirp</h1>
+</div>
+<div class="container">
+    <div class="fc">
+        <div float='left'>
+            <form class="form">
+                <div class="select">
+                    <select id="users" ng-model="chirpUser" ng-change="onCategoryChange(chirpUser)" ng-options="user.user for user in users">
+                    </select>
+                </div>
+                <div class = "field1">
+                    <input id="chirp-text" type="text" placeholder=" limit 140 characters" ng-model="chirpText" />
+                </div>
+                <div class = "submit1">
+                    <input id="chirp-submit" type="submit" value="chirp!" ng-disabled="chirpText==''" ng-click="createChirp()"/>
+                </div>
+            </form>
+        </div>
+        <br>
+        <br>
+        <div float="left">
+            <form class="new">
+                <div class="field2">
+                    <input id="user-text" type="text" placeholder=" username" ng-model="username"/>
+                    <input id="email-text" type="text" placeholder=" email" ng-model="email"/>
+                </div>
+                <div class="submit2">
+                    <input id="user-submit" type="submit" value="Create" ng-disabled="username=='' || email==''" ng-click="createUser()"/>
+                </div>
+            </form>
+        </div>
+    </div>
+    <ul id="feed">
+       <li class=`chirp` ng-repeat="chirp in chirps">
+            <span class=user>{{ chirp.user }}</span><br/>
+            <span class=msg>{{ chirp.message }}</span><br/>
+            <span class=ts>{{ chirp.timestamp }}</span>
+            <a ng-href="#!/chirps/{{ chirp.id }}"><button class=edit>edit</button></a>
+        </li>
+    </ul>
+    <div id="pop-up" class="modal">
+        <div class="update-prompt">
+            <form class="update-form">
+                <div>
+                    <input class="update-text" type="text" placeholder=" limit 140 characters" />
+                </div>
+                <div>
+                    <input class="update-cancel" type="button" value="cancel" />
+                    <input class="update-submit" type="submit" value="update!" disabled="disabled" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="foot">
+    </div>
+</div>

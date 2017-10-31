@@ -1,0 +1,17 @@
+<div class=head>
+        <h1>chirp</h1>
+</div>
+<div class=container>
+    <div class=single-box>
+        <ul id=single-ul>
+            <li id=single>
+                <span class=user>{{ singleChirp.user }}</span><br/>
+                <span class=msg>{{ singleChirp.message }}</span><br/>
+                <span class=ts>{{ singleChirp.timestamp }}</span><br/>
+                <a ng-href="#!/chirps/{{ singleChirp.id }}/update"><button class=edit>edit</button></a>
+                <button class=delete ng-click="deleteChirp()">delete</button>
+                <a ng-href="#!/chirps"><button class=cancel>cancel</button></a>
+            </li>
+        </ul>
+    </div>
+</div>
