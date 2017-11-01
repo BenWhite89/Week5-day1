@@ -67,7 +67,7 @@ app.route('/api/chirps')
         let message = req.body.message;
         modifyChirps('CreateChirp', [user, message])
             .then(function(id) {
-                res.status(201).send(id);
+                res.status(201).send(id[0]);
             }, function(err) {
                 res.status(500).send(err);
             });
@@ -78,7 +78,7 @@ app.route('/api/chirps/:id')
         let id = req.params.id;
         modifyChirps('GetSingleChirp', [id])
             .then(function(chirp) {
-                res.send(chirp);
+                res.send(chirp[0]);
             }, function(err) {
                 res.status(500).send(err);
             });
@@ -86,16 +86,16 @@ app.route('/api/chirps/:id')
         let id = req.params.id;
         modifyChirps('DeleteChirp', [id])
             .then(function(id) {
-                res.status(204).send(id);
+                res.status(204).send(id[0]);
             }, function(err) {
                 res.status(500).send(err);
             });
-    }).patch((req, res) => {
-        let id = req.params.id;   
+    }).put((req, res) => {
+        let id = req.params.id;
         let message = req.body.message;
         modifyChirps('UpdateChirp', [id, message])
             .then(function(id) {
-                res.status(201).send(id);
+                res.status(201).send(id[0]);
             }, function(err) {
                 res.status(500).send(err);
             });
@@ -111,10 +111,10 @@ app.route('/api/users')
         });
     }).post((req, res) => {
         let user = req.body.user;
-        let email = req.body.email
+        let email = req.body.email;
         modifyChirps('CreateUser', [user, email])
             .then(function(id) {
-                res.status(201).send(id);
+                res.status(201).send(id[0]);
             }, function(err) {
                 res.status(500).send(err);
             });

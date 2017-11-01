@@ -1,6 +1,6 @@
 angular.module ('myApp.services', [])
     .service('dateDiffService', function() {
-        
+
         function doubleDigits(input) {
             if (input.length > 1 || input > 9) {
                 return input;
@@ -13,12 +13,12 @@ angular.module ('myApp.services', [])
             this.user = user;
             this.message = message;
         }
-    
+
         function parseISOString(s) {
             var b = s.split(/\D+/);
             return new Date(Date.UTC(b[0], --b[1], b[2], b[3], b[4], b[5], b[6]));
           }
-    
+
         function isSingular(num, str) {
             if (num === 1) {
                 return `${num} ${str}`
@@ -37,7 +37,7 @@ angular.module ('myApp.services', [])
             let day = 24 * hr;
             let mth = 30 * day;
             let yr = (12 * mth) + (5.25 * day)
-    
+
             if (diff < min) {
                 return 'Just now'
             } else if (diff < hr) {
