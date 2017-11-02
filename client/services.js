@@ -1,5 +1,5 @@
 angular.module ('myApp.services', [])
-    .service('dateDiffService', function() {
+    .service('dateService', function() {
 
         function doubleDigits(input) {
             if (input.length > 1 || input > 9) {
@@ -7,11 +7,6 @@ angular.module ('myApp.services', [])
             } else {
                 return `0${input}`;
             }
-        }
-
-        function Chirp (user, message) {
-            this.user = user;
-            this.message = message;
         }
 
         function parseISOString(s) {

@@ -4,6 +4,7 @@
 
 body {
     background-color: white;
+    margin: 1em;
 }
 
 .container {
@@ -24,7 +25,7 @@ input[type=submit] {
     border-radius: .6em;
 }
 
-.field2 input {
+input {
     border-radius: .6em;
 }
 
@@ -52,7 +53,26 @@ input[type=submit] {
 .chirp {
     padding-top: .5em;
     padding-bottom: .5em;
-    padding-right: 1em;
+    margin-right: 2em;
+}
+
+.chirp.ng-enter,
+.chirp.ng-move,
+.chirp.ng-leave {
+    -webkit-transition:all linear 0.5s;
+    transition: all linear 0.5s;
+}
+
+.chirp.ng-leave.ng-leave-active,
+.chirp.ng-move,
+.chirp.ng-enter {
+  opacity:0;
+}
+
+.chirp.ng-leave,
+.chirp.ng-move.ng-move-active,
+.chirp.ng-enter.ng-enter-active {
+  opacity:1;
 }
 
 #single-ul {
@@ -89,14 +109,19 @@ li {
     list-style: none;
     padding-top: .5em;
     padding-bottom: .5em;
+    border-bottom: thin solid #727272;
+}
+
+li:last-child {
+    border-bottom: none;
 }
 
 .ts {
     font-size: .5em;
     text-align: right;
-    padding-right: 2em;
+    left: 100%;
     padding-top: .3em;
-    padding-left: 14em;
+    margin-left: 12em;
 }
 
 .submit1 {

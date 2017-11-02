@@ -2,7 +2,7 @@ angular.module('myApp.controllers', ['ngRoute', 'ngResource', 'myApp.services', 
     .controller('WelcomeCtrl', ['$scope', '$http', function($scope, $http) {
 
     }])
-    .controller('ListCtrl', ['$scope','dateDiffService', 'Chirps', 'Users', function($scope, dateDiffService, Chirps, Users) {
+    .controller('ListCtrl', ['$scope','dateService', 'Chirps', 'Users', function($scope, dateService, Chirps, Users) {
         $scope.chirpText = '';
         $scope.username = '';
         $scope.email = '';
@@ -25,7 +25,7 @@ angular.module('myApp.controllers', ['ngRoute', 'ngResource', 'myApp.services', 
         function refreshChirps() {
             $scope.chirps = Chirps.query(function(data) {
                 data.reverse().forEach(function(e) {
-                    e.timestamp = dateDiffService.dateDiff(e.timestamp);
+                    e.timestamp = dateService.dateDiff(e.timestamp);
                 })
             });
         };
@@ -44,12 +44,12 @@ angular.module('myApp.controllers', ['ngRoute', 'ngResource', 'myApp.services', 
             });
         };
     }])
-    .controller('SingleCtrl', ['$scope', '$routeParams', '$location', 'dateDiffService', 'Chirps', function($scope, $routeParams, $location, dateDiffService, Chirps) {
+    .controller('SingleCtrl', ['$scope', '$routeParams', '$location', 'dateService', 'Chirps', function($scope, $routeParams, $location, dateService, Chirps) {
         let index = $routeParams.id;
 
         Chirps.get({id: index}, function(success) {
             $scope.singleChirp = success;
-            $scope.singleChirp.timestamp = dateDiffService.dateDiff(success.timestamp);
+            $scope.singleChirp.timestamp = dateService.dateDiff(success.timestamp);
         });
 
         $scope.deleteChirp = function() {
@@ -58,7 +58,7 @@ angular.module('myApp.controllers', ['ngRoute', 'ngResource', 'myApp.services', 
             });
         };
     }])
-    .controller('UpdateCtrl', ['$scope', '$routeParams', '$location', 'Chirps', 'dateDiffService', function($scope, $routeParams, $location, Chirps, dateDiffService) {
+    .controller('UpdateCtrl', ['$scope', '$routeParams', '$location', 'Chirps', function($scope, $routeParams, $location, Chirps) {
         let index = $routeParams.id;
 
         Chirps.get({ id: index}, function(res) {
